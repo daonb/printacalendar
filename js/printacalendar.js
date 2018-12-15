@@ -482,7 +482,7 @@
     // Set Calendar
     //
 
-    function createDayBlock (dayIndex) {
+    function createDayBlock (day) {
         return (
             $('<div/>')
                 .addClass(CSS_CLASS_NAMES.dayframe)
@@ -495,7 +495,7 @@
                             $('<div/>')
                                 .addClass(CSS_CLASS_NAMES.date)
                                 .addClass(CSS_CLASS_NAMES.custom)
-                                .text(dayIndex + 1)
+                                .text(day)
                         )
                 )
         );
@@ -535,7 +535,7 @@
     }
 
     function createGridFrame (year, monthIndex) {
-        var startOfMonth  = (getDayOfWeek(year, monthIndex + 1, 1) + 6) % 7,
+        var startOfMonth  = (getDayOfWeek(year, monthIndex + 1, 18) + 6) % 7,
             days          = getDaysInAMonth(year, monthIndex + 1),
             $newGridFrame = $('<div/>')
                 .addClass(CSS_CLASS_NAMES.gridframe)
@@ -544,8 +544,8 @@
         for (i = 0; i < startOfMonth; i++) {
             $newGridFrame.append(createBlankBlock());
         }
-        for (i = 0; i < days; i++) {
-            $newGridFrame.append(createDayBlock(i));
+        for (i = 18; i < days+18; i++) {
+            $newGridFrame.append(createDayBlock((i<=days)?i:i-days));
         }
         for (i = startOfMonth + days; i < 35; i++) {
             $newGridFrame.append(createBlankBlock());
