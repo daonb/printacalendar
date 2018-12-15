@@ -99,7 +99,7 @@
         headermonth : {
             top        : '0in',
             left       : '0in',
-            fontFamily : 'Georgia',
+            fontFamily : 'Alpaca',
             fontWeight : 'bold',
             fontStyle  : 'normal',
             fontSize   : '20pt',
@@ -108,7 +108,7 @@
         headeryear : {
             top        : '0in',
             right      : '0in',
-            fontFamily : 'Georgia',
+            fontFamily : 'Alpaca',
             fontWeight : 'normal',
             fontStyle  : 'italic',
             fontSize   : '24pt',
