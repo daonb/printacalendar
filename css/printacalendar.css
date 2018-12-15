@@ -578,7 +578,7 @@
 .printacal-calendar-weekdayframe,
 .printacal-calendar-dayframe {
     display : block;
-    float   : left;
+    float   : right;
     width   : 14.2857%;
 }
 
