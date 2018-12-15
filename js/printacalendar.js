@@ -20,28 +20,22 @@
     //
 
     var MONTHS = [
-        { name : 'January',   days : 31 },
-        { name : 'February',  days : 28 },
-        { name : 'March',     days : 31 },
-        { name : 'April',     days : 30 },
-        { name : 'May',       days : 31 },
-        { name : 'June',      days : 30 },
-        { name : 'July',      days : 31 },
-        { name : 'August',    days : 31 },
-        { name : 'September', days : 30 },
-        { name : 'October',   days : 31 },
-        { name : 'November',  days : 30 },
-        { name : 'December',  days : 31 }
+        { name : 'ינואר',   days : 31 },
+        { name : 'פברואר',  days : 28 },
+        { name : 'מרץ',     days : 31 },
+        { name : 'אפריל',     days : 30 },
+        { name : 'מאי',       days : 31 },
+        { name : 'יוני',      days : 30 },
+        { name : 'יולי',      days : 31 },
+        { name : 'אוגוסט',    days : 31 },
+        { name : 'ספטמבר', days : 30 },
+        { name : 'אוקטובר',   days : 31 },
+        { name : 'נובמבר',  days : 30 },
+        { name : 'דצמבר',  days : 31 }
     ];
 
     var WEEKDAYS = [
-        { name : 'Saturday',  abbr : 'Sat' },
-        { name : 'Sunday',    abbr : 'Sun' },
-        { name : 'Monday',    abbr : 'Mon' },
-        { name : 'Tuesday',   abbr : 'Tue' },
-        { name : 'Wednesday', abbr : 'Wed' },
-        { name : 'Thursday',  abbr : 'Thu' },
-        { name : 'Friday',    abbr : 'Fri' }
+        'ראשון', 'שני', 'שלישי', 'רביעי', 'חמישי', 'שישי', 'שבת'
     ];
 
     //
@@ -532,7 +526,7 @@
                                 $('<div/>')
                                     .addClass(CSS_CLASS_NAMES.weekday)
                                     .addClass(CSS_CLASS_NAMES.custom)
-                                    .text(WEEKDAYS[(i + 8) % 7].name)
+                                    .text(WEEKDAYS[i])
                             )
                     )
             );
