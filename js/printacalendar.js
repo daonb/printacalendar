@@ -74,10 +74,11 @@
         pageframe : {
             height   : '297mm',
             width  : '210mm',
-            padding : '5mm'
+            padding : '8mm'
         },
         headerframe : {
-            textAlign: 'center'
+            textAlign: 'center',
+            padding: '4pt'
         },
         innerframe : {
             width   : '100%',
@@ -122,7 +123,8 @@
             borderLeftWidth   : '1pt',
             borderTopWidth    : '1pt',
             borderBottomWidth : '1pt',
-            borderColor       : 'grey'
+            borderColor       : 'grey',
+            textAlign         : 'center'
         },
         date : {
             top        : '0in',
@@ -134,12 +136,11 @@
             color      : 'black'
         },
         month : {
-            float      : 'right',
-            paddingRight: '5pt',
+            paddingTop: '8pt',
             fontFamily : 'Alpaca',
             fontStyle  : 'normal',
-            fontSize   : '20pt',
-            color      : 'black'
+            fontSize   : '16pt',
+            color      : 'black',
         },
     };
 
@@ -495,11 +496,16 @@
         
         innerDay.append(date);
         if ((day == 1) || (day == 18)) {
-            var month = $('<div/>')
+            innerDay.append(
+                    $('<div/>')
                         .addClass(CSS_CLASS_NAMES.month)
                         .addClass(CSS_CLASS_NAMES.custom)
-                        .text(MONTHS[monthIndex % 12].name);
-            innerDay.append(month);
+                        .text(MONTHS[monthIndex % 12].name),
+                    $('<div style="clear:both;"/>')
+                        .addClass(CSS_CLASS_NAMES.month)
+                        .addClass(CSS_CLASS_NAMES.custom)
+                        .text((((monthIndex==11)?0:1)+2018).toString())
+            );
         }
         db.append(innerDay);
         return db;
@@ -567,7 +573,7 @@
     function createMonthPage (year, monthIndex) {
         var h = ['וחודש', 'וחודשיים', 'ושלושה חודשים', 'וארבעה חודשים', 'וחמישה חודשים',
                  'ושישה חודשים', 'ושבעה חודשים', 'ושמונה חודשים', 'ותשעה חודשים',
-                 'ועשרה חודשים', 'ואחת עשרה חודשים', ''];
+                 'ועשרה חודשים', 'ואחת עשרה חודשים', 'ዞᏜ℘℘Ꮍ ℬℹℛʈዞᗬᏜᎽ'];
         return (
             $('<div/>')
                 .addClass(CSS_CLASS_NAMES.pageframe)
@@ -580,7 +586,7 @@
                         .append($('<div style="width: 100%;" \>')
                             .append($('<img/>')
                                     .attr('alt', "Yet Another View of Month Fuji")
-                                    .attr('src', "/img/cover.1.jpg")
+                                    .attr('src', "/img/cover."+((monthIndex+1)%12+1).toString()+".jpg")
                                     .attr('width', "100%")
                             )
                         )
@@ -591,7 +597,7 @@
                                 .append($('<span/>')
                                         .addClass(CSS_CLASS_NAMES.headermonth)
                                         .addClass(CSS_CLASS_NAMES.custom)
-                                        .text('דניאלה בת שמונה '+h[monthIndex])
+                                        .text(((monthIndex!=11)?'דניאלה בת שמונה ':'')+h[monthIndex])
                                 )
                         )
                         .append($('<div/>')
