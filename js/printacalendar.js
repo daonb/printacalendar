@@ -57,6 +57,7 @@
         dayframe          : 'printacal-calendar-dayframe',
         innerdayframe     : 'printacal-calendar-innerdayframe',
         date              : 'printacal-calendar-date',
+        month             : 'printacal-calendar-month',
         custom            : 'printacal-calendar-custom'
     };
 
@@ -118,11 +119,11 @@
         innerdayframe : {
             backgroundColor   : 'white',
             borderStyle       : 'solid',
-            borderTopWidth    : '2pt',
-            borderRightWidth  : '2pt',
-            borderBottomWidth : '2pt',
-            borderLeftWidth   : '2pt',
-            borderColor       : 'violet'
+            borderTopWidth    : '0pt',
+            borderRightWidth  : '1pt',
+            borderBottomWidth : '1pt',
+            borderLeftWidth   : '1pt',
+            borderColor       : 'black'
         },
         date : {
             top        : '0in',
@@ -131,6 +132,14 @@
             fontWeight : 'normal',
             fontStyle  : 'normal',
             fontSize   : '12pt',
+            color      : 'black'
+        },
+        month : {
+            float      : 'right',
+            paddingRight: '5pt',
+            fontFamily : 'Alpaca',
+            fontStyle  : 'normal',
+            fontSize   : '20pt',
             color      : 'black'
         },
     };
@@ -472,23 +481,29 @@
     // Set Calendar
     //
 
-    function createDayBlock (day) {
-        return (
-            $('<div/>')
-                .addClass(CSS_CLASS_NAMES.dayframe)
-                .addClass(CSS_CLASS_NAMES.custom)
-                .append(
-                    $('<div/>')
-                        .addClass(CSS_CLASS_NAMES.innerdayframe)
+    function createDayBlock (day, monthIndex) {
+        var db = $('<div/>')
+                       .addClass(CSS_CLASS_NAMES.dayframe)
+                       .addClass(CSS_CLASS_NAMES.custom),
+            innerDay = $('<div/>')
+                       .addClass(CSS_CLASS_NAMES.innerdayframe)
+                       .addClass(CSS_CLASS_NAMES.custom),
+            date = $('<div/>')
+                   .addClass(CSS_CLASS_NAMES.date)
+                   .addClass(CSS_CLASS_NAMES.custom)
+                   .text(day);
+                       
+        
+        innerDay.append(date);
+        if ((day == 1) || (day == 18)) {
+            var month = $('<div/>')
+                        .addClass(CSS_CLASS_NAMES.month)
                         .addClass(CSS_CLASS_NAMES.custom)
-                        .append(
-                            $('<div/>')
-                                .addClass(CSS_CLASS_NAMES.date)
-                                .addClass(CSS_CLASS_NAMES.custom)
-                                .text(day)
-                        )
-                )
-        );
+                        .text(MONTHS[monthIndex % 12].name);
+            innerDay.append(month);
+        }
+        db.append(innerDay);
+        return db;
     }
 
     function createBlankBlock () {
@@ -535,7 +550,14 @@
             $newGridFrame.append(createBlankBlock());
         }
         for (i = 18; i < days+18; i++) {
-            $newGridFrame.append(createDayBlock((i<=days)?i:i-days));
+            var mi = monthIndex,
+                day = i;
+
+            if (day > days) {
+                mi ++;
+                day -= days;
+            }
+            $newGridFrame.append(createDayBlock(day, mi));
         }
         for (i = startOfMonth + days; i < 35; i++) {
             $newGridFrame.append(createBlankBlock());
