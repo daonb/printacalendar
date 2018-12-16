@@ -77,6 +77,7 @@
         },
         headerframe : {
             height  : '10%',
+            textAlign: 'center'
         },
         innerframe : {
             width   : '100%',
@@ -91,21 +92,10 @@
             height       : '6.125in'
         },
         headermonth : {
-            top        : '0in',
-            left       : '0in',
             fontFamily : 'Alpaca',
             fontWeight : 'bold',
             fontStyle  : 'normal',
             fontSize   : '20pt',
-            color      : 'black'
-        },
-        headeryear : {
-            top        : '0in',
-            right      : '0in',
-            fontFamily : 'Alpaca',
-            fontWeight : 'normal',
-            fontStyle  : 'italic',
-            fontSize   : '24pt',
             color      : 'black'
         },
         weekdayframe : {
@@ -126,13 +116,13 @@
             padding : '1.5pt'
         },
         innerdayframe : {
-            backgroundColor   : '#ddd',
+            backgroundColor   : 'white',
             borderStyle       : 'solid',
-            borderTopWidth    : '6pt',
-            borderRightWidth  : '0pt',
-            borderBottomWidth : '0pt',
-            borderLeftWidth   : '0pt',
-            borderColor       : 'black'
+            borderTopWidth    : '2pt',
+            borderRightWidth  : '2pt',
+            borderBottomWidth : '2pt',
+            borderLeftWidth   : '2pt',
+            borderColor       : 'violet'
         },
         date : {
             top        : '0in',
@@ -440,8 +430,8 @@
         ui.$opts = $('#printacal-options');
 
         ui.$year.on('change', function () {
-            data.year = ui.$year.val();
-            setCalendar();
+            
+            setCalendar(ui.$year.val());
         });
 
         $('#printacal-print').on('click', window.print.bind(window));
@@ -472,9 +462,9 @@
     function init () {
         initCustomStyleRules();
         initUI();
-        ui.$year.attr('value', data.year = (new window.Date()).getYear() + 1900);
-        setCalendar();
+        setCalendar((new window.Date()).getYear() + 1901);
         setStyles(defaultStyles);
+
         init = null;
     }
 
@@ -554,6 +544,9 @@
     }
 
     function createMonthPage (year, monthIndex) {
+        var h = ['וחודש', 'וחודשיים', 'ושלושה חודשים', 'וארבעה חודשים', 'וחמישה חודשים',
+                 'ושישה חודשים', 'ושבעה חודשים', 'ושמונה חודשים', 'ותשעה חודשים',
+                 'ועשרה חודשים', 'ואחת עשרה חודשים', ''];
         return (
             $('<div/>')
                 .addClass(CSS_CLASS_NAMES.pageframe)
@@ -567,17 +560,12 @@
                             $('<div/>')
                                 .addClass(CSS_CLASS_NAMES.headerframe)
                                 .addClass(CSS_CLASS_NAMES.custom)
+                                // .addClass("triangle-isosceles")
                                 .append(
                                     $('<span/>')
                                         .addClass(CSS_CLASS_NAMES.headermonth)
                                         .addClass(CSS_CLASS_NAMES.custom)
-                                        .text(MONTHS[monthIndex].name)
-                                )
-                                .append(
-                                    $('<span/>')
-                                        .addClass(CSS_CLASS_NAMES.headeryear)
-                                        .addClass(CSS_CLASS_NAMES.custom)
-                                        .text(data.year)
+                                        .text('דניאלה בת שמונה '+h[monthIndex])
                                 )
                         )
                         .append(
@@ -591,10 +579,11 @@
         );
     }
 
-    function setCalendar () {
+    function setCalendar (year) {
         ui.$view.empty();
         for (var i = 0; i < MONTHS.length; i++) {
-            ui.$view.append(createMonthPage(data.year, i));
+            ui.$view.append(createMonthPage((i==0)?year-1:year,
+                                            (i+11) % 12));
         }
         ui.$monthPages = ui.$view.children('.' + CSS_CLASS_NAMES.pageframe);
         jumpToMonth(0);

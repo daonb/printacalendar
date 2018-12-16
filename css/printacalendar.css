@@ -492,7 +492,7 @@
     .wrapper-innerframe {
         width      : auto;
         height     : auto;
-        float      : left;
+        float      : right;
         padding    : 0;
         overflow   : hidden;
         background : none;
@@ -572,11 +572,6 @@
     position : relative;
     z-index  : 1;
     overflow : visible;
-}
-
-.printacal-calendar-headermonth,
-.printacal-calendar-headeryear {
-    position : absolute;
 }
 
 .printacal-calendar-weekdayframe,
