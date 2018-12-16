@@ -58,6 +58,7 @@
         innerdayframe     : 'printacal-calendar-innerdayframe',
         date              : 'printacal-calendar-date',
         month             : 'printacal-calendar-month',
+        year             : 'printacal-calendar-year',
         custom            : 'printacal-calendar-custom'
     };
 
@@ -97,7 +98,7 @@
             fontWeight : 'bold',
             fontStyle  : 'normal',
             fontSize   : '20pt',
-            color      : 'black'
+            color      : '#07255F'
         },
         weekdayframe : {
             padding    : '1.5pt'
@@ -107,7 +108,7 @@
             textAlign  : 'center'
         },
         weekday : {
-            color           : 'black',
+            color           : '#07255F',
             fontFamily      : 'Alpaca',
             fontWeight      : 'normal',
             fontStyle       : 'normal',
@@ -123,25 +124,33 @@
             borderLeftWidth   : '1pt',
             borderTopWidth    : '1pt',
             borderBottomWidth : '1pt',
-            borderColor       : 'grey',
+            borderRadius      : '8pt',
+            borderColor       : '#83B8CA',
             textAlign         : 'center'
         },
         date : {
-            top        : '0in',
-            left       : '2pt',
+            top        : '1mm',
+            right      : '1mm',
             fontFamily : 'Georgia',
             fontWeight : 'normal',
             fontStyle  : 'normal',
             fontSize   : '12pt',
-            color      : 'black'
+            color      : '#07255F'
         },
         month : {
-            paddingTop: '8pt',
+            paddingTop: '12pt',
             fontFamily : 'Alpaca',
             fontStyle  : 'normal',
             fontSize   : '16pt',
-            color      : 'black',
+            color      : '#07255F',
         },
+        year : {
+            paddingTop: '2pt',
+            fontFamily : 'Alpaca',
+            fontStyle  : 'normal',
+            fontSize   : '16pt',
+            color      : '#07255F',
+        }
     };
 
     //
@@ -494,19 +503,33 @@
                    .text(day);
                        
         
-        innerDay.append(date);
-        if ((day == 1) || (day == 18)) {
+        if (day == 1) {
             innerDay.append(
                     $('<div/>')
                         .addClass(CSS_CLASS_NAMES.month)
                         .addClass(CSS_CLASS_NAMES.custom)
                         .text(MONTHS[monthIndex % 12].name),
                     $('<div style="clear:both;"/>')
-                        .addClass(CSS_CLASS_NAMES.month)
+                        .addClass(CSS_CLASS_NAMES.year)
                         .addClass(CSS_CLASS_NAMES.custom)
-                        .text((((monthIndex==11)?0:1)+2018).toString())
+                        .text("2019")
             );
         }
+        else if (day == 18) {
+            date.css('fontWeight', 'bold');
+            date.css('fontSize', '14pt');
+            innerDay.append(
+                    $('<div/>')
+                        .addClass(CSS_CLASS_NAMES.month)
+                        .addClass(CSS_CLASS_NAMES.custom)
+                        .text(MONTHS[monthIndex % 12].name),
+                    $('<div style="clear:both;"/>')
+                        .addClass(CSS_CLASS_NAMES.year)
+                        .addClass(CSS_CLASS_NAMES.custom)
+                        .text(((monthIndex==11)?"2018":"2019"))
+            );
+        }
+        innerDay.append(date);
         db.append(innerDay);
         return db;
     }
@@ -573,7 +596,7 @@
     function createMonthPage (year, monthIndex) {
         var h = ['וחודש', 'וחודשיים', 'ושלושה חודשים', 'וארבעה חודשים', 'וחמישה חודשים',
                  'ושישה חודשים', 'ושבעה חודשים', 'ושמונה חודשים', 'ותשעה חודשים',
-                 'ועשרה חודשים', 'ואחת עשרה חודשים', 'ዞᏜ℘℘Ꮍ ℬℹℛʈዞᗬᏜᎽ ᗬąŋıɛƖƖą'];
+                 'ועשרה חודשים', 'ואחת עשרה חודשים', '卄卂卩卩ㄚ  乃丨尺ㄒ卄ᗪ卂ㄚ  ᗪ卂几丨乇ㄥㄥ卂'];
         return (
             $('<div/>')
                 .addClass(CSS_CLASS_NAMES.pageframe)
