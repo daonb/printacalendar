@@ -74,7 +74,7 @@
         pageframe : {
             height   : '297mm',
             width  : '210mm',
-            padding : '8mm'
+            padding : '7mm',
         },
         headerframe : {
             textAlign: 'center',
@@ -86,7 +86,7 @@
         },
         weekframe : {
             height       : '0.25in',
-            marginBottom : '0.125in'
+            marginBottom : '0.1in'
         },
         gridframe : {
             width        : '100%',
@@ -573,7 +573,7 @@
     function createMonthPage (year, monthIndex) {
         var h = ['וחודש', 'וחודשיים', 'ושלושה חודשים', 'וארבעה חודשים', 'וחמישה חודשים',
                  'ושישה חודשים', 'ושבעה חודשים', 'ושמונה חודשים', 'ותשעה חודשים',
-                 'ועשרה חודשים', 'ואחת עשרה חודשים', 'ዞᏜ℘℘Ꮍ ℬℹℛʈዞᗬᏜᎽ'];
+                 'ועשרה חודשים', 'ואחת עשרה חודשים', 'ዞᏜ℘℘Ꮍ ℬℹℛʈዞᗬᏜᎽ ᗬąŋıɛƖƖą'];
         return (
             $('<div/>')
                 .addClass(CSS_CLASS_NAMES.pageframe)
