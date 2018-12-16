@@ -72,12 +72,11 @@
 
     var defaultStyles = {
         pageframe : {
-            width   : '11in',
-            height  : '8.5in',
-            padding : '0.375in'
+            height   : '297mm',
+            width  : '210mm',
+            padding : '5mm'
         },
         headerframe : {
-            height  : '10%',
             textAlign: 'center'
         },
         innerframe : {
@@ -100,30 +99,30 @@
             color      : 'black'
         },
         weekdayframe : {
-            padding         : '1.5pt'
+            padding    : '1.5pt'
         },
         innerweekdayframe : {
-            padding         : '2pt',
-            backgroundColor : 'black'
+            padding    : '2pt',
+            textAlign  : 'center'
         },
         weekday : {
-            color           : 'white',
-            fontFamily      : 'Georgia',
+            color           : 'black',
+            fontFamily      : 'Alpaca',
             fontWeight      : 'normal',
             fontStyle       : 'normal',
-            fontSize        : '10pt'
+            fontSize        : '12pt'
         },
         dayframe      : {
             padding : '1.5pt'
         },
         innerdayframe : {
             backgroundColor   : 'white',
-            borderStyle       : 'solid',
-            borderTopWidth    : '0pt',
+            borderStyle       : 'dashed',
             borderRightWidth  : '1pt',
-            borderBottomWidth : '1pt',
             borderLeftWidth   : '1pt',
-            borderColor       : 'black'
+            borderTopWidth    : '1pt',
+            borderBottomWidth : '1pt',
+            borderColor       : 'grey'
         },
         date : {
             top        : '0in',
@@ -578,20 +577,24 @@
                     $('<div/>')
                         .addClass(CSS_CLASS_NAMES.outerframe)
                         .addClass(CSS_CLASS_NAMES.custom)
-                        .append(
-                            $('<div/>')
+                        .append($('<div style="width: 100%;" \>')
+                            .append($('<img/>')
+                                    .attr('alt', "Yet Another View of Month Fuji")
+                                    .attr('src', "/img/cover.1.jpg")
+                                    .attr('width', "100%")
+                            )
+                        )
+                        .append($('<div/>')
                                 .addClass(CSS_CLASS_NAMES.headerframe)
                                 .addClass(CSS_CLASS_NAMES.custom)
                                 // .addClass("triangle-isosceles")
-                                .append(
-                                    $('<span/>')
+                                .append($('<span/>')
                                         .addClass(CSS_CLASS_NAMES.headermonth)
                                         .addClass(CSS_CLASS_NAMES.custom)
                                         .text('דניאלה בת שמונה '+h[monthIndex])
                                 )
                         )
-                        .append(
-                            $('<div/>')
+                        .append($('<div/>')
                                 .addClass(CSS_CLASS_NAMES.innerframe)
                                 .addClass(CSS_CLASS_NAMES.custom)
                                 .append(createWeekFrame())
