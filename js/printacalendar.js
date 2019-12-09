@@ -620,7 +620,7 @@
                                 .append($('<span/>')
                                         .addClass(CSS_CLASS_NAMES.headermonth)
                                         .addClass(CSS_CLASS_NAMES.custom)
-                                        .text(((monthIndex!=11)?'דניאלה בת שמונה ':'')+h[monthIndex])
+                                        .text(((monthIndex!=11)?'דניאלה בת תשע ':'')+h[monthIndex])
                                 )
                         )
                         .append($('<div/>')
