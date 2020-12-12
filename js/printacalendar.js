@@ -512,7 +512,7 @@
                     $('<div style="clear:both;"/>')
                         .addClass(CSS_CLASS_NAMES.year)
                         .addClass(CSS_CLASS_NAMES.custom)
-                        .text("2019")
+                        .text("2021")
             );
         }
         else if (day == 18) {
@@ -526,7 +526,7 @@
                     $('<div style="clear:both;"/>')
                         .addClass(CSS_CLASS_NAMES.year)
                         .addClass(CSS_CLASS_NAMES.custom)
-                        .text(((monthIndex==11)?"2018":"2019"))
+                        .text(((monthIndex==11)?"2020":"2021"))
             );
         }
         innerDay.append(date);
@@ -620,7 +620,7 @@
                                 .append($('<span/>')
                                         .addClass(CSS_CLASS_NAMES.headermonth)
                                         .addClass(CSS_CLASS_NAMES.custom)
-                                        .text(((monthIndex!=11)?'דניאלה בת תשע ':'')+h[monthIndex])
+                                        .text(((monthIndex!=11)?'דניאלה בת עשר ':'')+h[monthIndex])
                                 )
                         )
                         .append($('<div/>')
