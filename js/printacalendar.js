@@ -98,7 +98,7 @@
             fontWeight : 'bold',
             fontStyle  : 'normal',
             fontSize   : '20pt',
-            color      : '#07255F'
+            color      : '#48413A'
         },
         weekdayframe : {
             padding    : '1.5pt'
@@ -108,7 +108,7 @@
             textAlign  : 'center'
         },
         weekday : {
-            color           : '#07255F',
+            color           : '#48413A',
             fontFamily      : 'Alpaca',
             fontWeight      : 'normal',
             fontStyle       : 'normal',
@@ -125,7 +125,7 @@
             borderTopWidth    : '1pt',
             borderBottomWidth : '1pt',
             borderRadius      : '8pt',
-            borderColor       : '#83B8CA',
+            borderColor       : '#040404',
             textAlign         : 'center'
         },
         date : {
@@ -135,21 +135,21 @@
             fontWeight : 'normal',
             fontStyle  : 'normal',
             fontSize   : '12pt',
-            color      : '#07255F'
+            color      : '#48413A'
         },
         month : {
             paddingTop: '12pt',
             fontFamily : 'Alpaca',
             fontStyle  : 'normal',
             fontSize   : '16pt',
-            color      : '#07255F',
+            color      : '#48413A',
         },
         year : {
             paddingTop: '2pt',
             fontFamily : 'Alpaca',
             fontStyle  : 'normal',
             fontSize   : '16pt',
-            color      : '#07255F',
+            color      : '#48413A',
         }
     };
 
@@ -500,7 +500,8 @@
             date = $('<div/>')
                    .addClass(CSS_CLASS_NAMES.date)
                    .addClass(CSS_CLASS_NAMES.custom)
-                   .text(day);
+                   .text(day),
+            year = new Date().getFullYear();
                        
         
         if (day == 1) {
@@ -512,7 +513,7 @@
                     $('<div style="clear:both;"/>')
                         .addClass(CSS_CLASS_NAMES.year)
                         .addClass(CSS_CLASS_NAMES.custom)
-                        .text("2021")
+                        .text(String(year))
             );
         }
         else if (day == 18) {
@@ -526,7 +527,7 @@
                     $('<div style="clear:both;"/>')
                         .addClass(CSS_CLASS_NAMES.year)
                         .addClass(CSS_CLASS_NAMES.custom)
-                        .text(((monthIndex==11)?"2020":"2021"))
+                        .text((monthIndex==11)?String(year):String(year+1))
             );
         }
         innerDay.append(date);
@@ -609,7 +610,7 @@
                         .append($('<div style="width: 100%;" \>')
                             .append($('<img/>')
                                     .attr('alt', "Yet Another View of Month Fuji")
-                                    .attr('src', "/img/cover."+((monthIndex+1)%12+1).toString()+".jpg")
+                                    .attr('src', "/img/cover."+((monthIndex+1)%12+1).toString()+".JPG")
                                     .attr('width', "100%")
                             )
                         )
@@ -620,7 +621,7 @@
                                 .append($('<span/>')
                                         .addClass(CSS_CLASS_NAMES.headermonth)
                                         .addClass(CSS_CLASS_NAMES.custom)
-                                        .text(((monthIndex!=11)?'דניאלה בת עשר ':'')+h[monthIndex])
+                                        .text(((monthIndex!=11)?'דניאלה בת אחת עשרה ':'')+h[monthIndex])
                                 )
                         )
                         .append($('<div/>')
